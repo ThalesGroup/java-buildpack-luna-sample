@@ -56,7 +56,7 @@ final class CryptoController {
         this.logger.info("Decrypting Cipher Text '{}'", cipherText);
 
         this.decryptionCipher.update(this.decoder.decode(cipherText));
-        String message = new String(this.decryptionCipher.doFinal(), Charset.defaultCharset());
+        String message = new String(this.decryptionCipher.doFinal(), Charset.defaultCharset()).trim();
 
         return zip(new String[]{"cipher-text", "message"}, new String[]{cipherText, message});
     }
