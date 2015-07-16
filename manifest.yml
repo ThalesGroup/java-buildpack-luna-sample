@@ -1,0 +1,13 @@
+---
+applications:
+- name: luna-sample
+  memory: 512M
+  instances: 1
+  path: target/luna-sample-1-SNAPSHOT.jar
+  buildpack: https://github.com/nebhale/java-buildpack.git#96530962-luna-security-provider
+  stack: cflinuxfs2
+  services:
+  - luna
+  env:
+    JBP_CONFIG_COMPONENTS: 'frameworks: ["JavaBuildpack::Framework::AppDynamicsAgent", "JavaBuildpack::Framework::JavaOpts", "JavaBuildpack::Framework::JrebelAgent", "JavaBuildpack::Framework::LunaSecurityProvider", "JavaBuildpack::Framework::MariaDbJDBC", "JavaBuildpack::Framework::NewRelicAgent", "JavaBuildpack::Framework::PlayFrameworkAutoReconfiguration", "JavaBuildpack::Framework::PlayFrameworkJPAPlugin", "JavaBuildpack::Framework::PostgresqlJDBC", "JavaBuildpack::Framework::SpringAutoReconfiguration", "JavaBuildpack::Framework::SpringInsight"]'
+    JBP_CONFIG_LUNA_SECURITY_PROVIDER: 'repository_root: http://do-not-give-this-url-to-anyone.download.pivotal.io.s3.amazonaws.com/luna-client'
