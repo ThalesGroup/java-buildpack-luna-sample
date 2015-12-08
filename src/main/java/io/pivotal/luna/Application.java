@@ -50,9 +50,10 @@ public class Application {
     }
 
     @Bean(destroyMethod = "logout")
-    LunaSlotManager slotManager(@Value("${luna.password:userpin}") String password) {
+    LunaSlotManager slotManager(@Value("${luna.tokenLabel}") String tokenLabel,
+                                @Value("${luna.password}") String password) {
         LunaSlotManager slotManager = LunaSlotManager.getInstance();
-        slotManager.login(password);
+        slotManager.login(tokenLabel, password);
         return slotManager;
     }
 
