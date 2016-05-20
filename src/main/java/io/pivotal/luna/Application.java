@@ -50,8 +50,8 @@ public class Application {
     }
 
     @Bean(destroyMethod = "logout")
-    LunaSlotManager slotManager(@Value("${luna.tokenLabel}") String tokenLabel,
-                                @Value("${luna.password}") String password) {
+    LunaSlotManager slotManager(@Value("${vcap.services.myhsm.credentials.crypto_service_id}") String tokenLabel,
+                                @Value("${vcap.services.myhsm.credentials.crypto_service_password}") String password) {
         LunaSlotManager slotManager = LunaSlotManager.getInstance();
         slotManager.login(tokenLabel, password);
         return slotManager;
